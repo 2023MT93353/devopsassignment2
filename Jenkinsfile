@@ -2,14 +2,6 @@ pipeline {
     agent any
 
     stages {
-        stage('Checkout') {
-            steps {
-                // Checkout code from Git repository
-                checkout([$class: 'GitSCM',
-                          branches: [[name: '*/main']],
-                          userRemoteConfigs: [[url: 'https://github.com/2023MT93353/devopsassignment2']]])
-            }
-        }
 
         stage('Compile') {
             steps {
