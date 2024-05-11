@@ -2,12 +2,12 @@ pipeline {
     agent any
 
     stages {
-        stage('Checkout') {
-            steps {
+        //stage('Checkout') {
+          //  steps {
                 // Checkout code from GitHub
-                git credentialsId: 'your-github-credentials', url: 'https://github.com/your-org/your-repo.git'
-            }
-        }
+            //    git credentialsId: 'your-github-credentials', url: 'https://github.com/your-org/your-repo.git'
+            //}
+        //}
 
         stage('Build') {
             steps {
@@ -24,7 +24,7 @@ pipeline {
         }
         failure {
             // If build fails, send email notification to developers
-            emailext attachLog: true, recipients: 'developers@example.com', subject: 'Build Failed', body: 'The build failed. Please check Jenkins for details.'
+            //emailext attachLog: true, recipients: 'developers@example.com', subject: 'Build Failed', body: 'The build failed. Please check Jenkins for details.'
         }
     }
 }
