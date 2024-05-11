@@ -17,14 +17,5 @@ pipeline {
         }
     }
 
-    post {
-        success {
-            // If build succeeds, archive artifacts (e.g., JAR files)
-            archiveArtifacts artifacts: '**/target/*.jar', fingerprint: true
-        }
-        failure {
-            // If build fails, send email notification to developers
-            //emailext attachLog: true, recipients: 'developers@example.com', subject: 'Build Failed', body: 'The build failed. Please check Jenkins for details.'
-        }
-    }
+
 }
