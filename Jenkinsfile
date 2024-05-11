@@ -2,11 +2,21 @@ pipeline {
     agent any
 
     stages {
+        stage('Checkout') {
+            steps {
+                // Checkout code from Git repository
+                checkout([$class: 'GitSCM',
+                          branches: [[name: '*/main']],
+                          userRemoteConfigs: [[url: 'https://github.com/2023MT93353/devopsassignment2']]])
+            }
+        }
+
         stage('Compile') {
             steps {
                 bat 'mvn clean compile'
             }
         }
+
         stage('Build') {
             steps {
                 bat 'mvn install'
@@ -16,8 +26,7 @@ pipeline {
 
     post {
         success {
-            // If build succeeds, archive the build artifacts
-            archiveArtifacts artifacts: '**/target/*.jar', allowEmptyArchive: true
+            echo 'Build Success'
         }
         failure {
             // If build fails, send a notification or take other actions
