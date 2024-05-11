@@ -21,7 +21,7 @@ pipeline {
             echo 'Build Success'
         }
         failure {
-            // If build fails, send a notification or take other actions
+
             echo 'Build failed! Please check the build logs.'
         }
         always {
