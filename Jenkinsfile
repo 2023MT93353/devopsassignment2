@@ -2,19 +2,20 @@ pipeline {
     agent any
 
     stages {
-            stage('Checkout') {
+
+
+            stage('Compile') {
                 steps {
-                    // This stage will checkout the code from the repository automatically
-                    checkout scm
+
+                    bat 'mvn clean compile'
+                }
+            }
+            stage('build') {
+                steps {
+                    bat 'mvn install'
                 }
             }
 
-            stage('Compile and Build') {
-                steps {
-                    // Run Maven compile and build
-                    sh 'mvn clean compile package'
-                }
-            }
         }
 
 
