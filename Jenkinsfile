@@ -2,20 +2,20 @@ pipeline {
     agent any
 
     stages {
-        //stage('Checkout') {
-          //  steps {
-                // Checkout code from GitHub
-            //    git credentialsId: 'your-github-credentials', url: 'https://github.com/your-org/your-repo.git'
-            //}
-        //}
+            stage('Checkout') {
+                steps {
+                    // This stage will checkout the code from the repository automatically
+                    checkout scm
+                }
+            }
 
-        stage('Build') {
-            steps {
-                // Run Maven build
-                sh 'mvn clean install'
+            stage('Compile and Build') {
+                steps {
+                    // Run Maven compile and build
+                    sh 'mvn clean compile package'
+                }
             }
         }
-    }
 
 
 }
